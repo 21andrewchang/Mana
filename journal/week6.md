@@ -46,6 +46,14 @@ Working on finishing Design Doc
   - writing out specs for profile page
   - started on wireframe for ios app
 
+**Completed**
+
+- Devops
+  - Verification system (Simulates Pull Request)
+    - When done w/ a task add it to Done column to be checked by peers
+    - When ticket is verified by all members move to backlog
+  - Added label "Checked by \_\_\_\_"
+
 **Notes:**
 
 **Thoughts:**
