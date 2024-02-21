@@ -1,6 +1,6 @@
 # Week 5
 
-### Feb 21
+### Feb 20
 
 **Currently working on:**
 
@@ -32,7 +32,7 @@ So far just setting up everything.
 
 ---
 
-### Feb 22
+### Feb 21
 
 Working on finishing Design Doc
 
