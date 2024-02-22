@@ -46,7 +46,7 @@ Working on finishing Design Doc
   - writing out specs for profile page
   - started on wireframe for ios app
 
-**Completed**
+**Completed:**
 
 - Devops
   - Verification system (Simulates Pull Request)
@@ -62,3 +62,99 @@ Working on finishing Design Doc
 **Thoughts:**
 
 So far just setting up everything.
+
+---
+
+### Feb 22
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 23
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 24
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 25
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 26
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 27
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 28
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
+
+---
+
+### Feb 29
+
+**Currently working on:**
+
+**Completed:**
+
+**Notes:**
+
+**Thoughts:**
