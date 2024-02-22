@@ -53,6 +53,9 @@ Working on finishing Design Doc
     - When done w/ a task add it to Done column to be checked by peers
     - When ticket is verified by all members move to backlog
   - Added label "Checked by \_\_\_\_"
+- Design Doc
+  - Formatted Schedule
+  - Added simple flowchart
 
 **Notes:**
 
