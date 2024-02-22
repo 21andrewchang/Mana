@@ -71,6 +71,9 @@ So far just setting up everything.
 
 **Completed:**
 
+- Design Doc
+  - Block Diagram Description
+
 **Notes:**
 
 **Thoughts:**
