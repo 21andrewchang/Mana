@@ -67,6 +67,8 @@ So far just setting up everything.
 
 ### Feb 22
 
+Finalizing Design Doc and submitting
+
 **Currently working on:**
 
 **Completed:**
