@@ -1,21 +1,60 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity></TouchableOpacity>
-      <Text>sup retards</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.top}>
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 30, fontWeight: "bold" }}>Welcome Back</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold" }}> Andrew</Text>
+        </View>
+        <TouchableOpacity style={styles.profileButton}>
+          <Text style={{ color: "#FFF" }}>AC</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.drinkButton}>
+        <Text style={{ color: "#FFF" }}>Request Drink</Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
+  top: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 10,
+    paddingHorizontal: 30,
+  },
+  profileButton: {
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    backgroundColor: "#020202",
+  },
+  drinkButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    width: 150,
+    height: 50,
+    backgroundColor: "#020202",
+  },
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
