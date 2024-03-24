@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Checkin from "./Checkin";
+import Checkin from "./src/Checkin";
 
 export default function App() {
   return (
