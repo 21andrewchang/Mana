@@ -6,26 +6,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Checkin from "./Checkin";
 
-export default function App() {
+export default function Checkin() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.top}>
-        <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>Welcome Back</Text>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}> Andrew</Text>
-        </View>
-        <TouchableOpacity style={styles.profileButton}>
-          <Text style={{ color: "#FFF" }}>AC</Text>
-        </TouchableOpacity>
-      </View>
-      <Checkin />
-      <TouchableOpacity style={styles.drinkButton}>
-        <Text style={{ color: "#FFF" }}>Request Drink</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <View>
+      <Text>Checkin</Text>
+    </View>
   );
 }
 
