@@ -11,20 +11,31 @@ import Checkin from "./src/Checkin";
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.top}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          margin: 20,
+        }}
+      >
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>Welcome Back</Text>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}> Andrew</Text>
+          <Text style={{ fontSize: 40, fontWeight: "bold" }}>Today</Text>
         </View>
         <TouchableOpacity style={styles.profileButton}>
           <Text style={{ color: "#FFF" }}>AC</Text>
         </TouchableOpacity>
       </View>
-      <Checkin />
-      <TouchableOpacity style={styles.drinkButton}>
-        <Text style={{ color: "#FFF" }}>Request Drink</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity style={styles.drinkButton}>
+          <Text style={{ color: "#FFF" }}>Add</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.drinkButton}>
+          <Text style={{ color: "#FFF" }}>Drink</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.drinkButton}>
+          <Text style={{ color: "#FFF" }}>Log</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -47,9 +58,10 @@ const styles = StyleSheet.create({
   drinkButton: {
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
-    width: 150,
-    height: 50,
+    borderRadius: 50,
+    margin: 20,
+    width: 80,
+    height: 80,
     backgroundColor: "#020202",
   },
   container: {
