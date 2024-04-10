@@ -3,14 +3,38 @@ import NavBar from "./src/NavBar";
 import Macros from "./src/Macros";
 import Meals from "./src/Meals";
 import { useState } from "react";
+import AddMeal from "./src/AddMeal";
 
+//TODO Generate a meal to complete leftover calorie/macro limit?
 export default function App() {
-  const cancel = require("./assets/CancelButton.png");
-  const [addMeal, setAddMeal] = useState(false);
+  const [addMealVisible, setAddMealVisible] = useState(false);
   const [mode, setMode] = useState("Today");
+  const [meals, setMeals] = useState([
+    { title: "Meal 1", food: "🍳 Scrambled Eggs" },
+    { title: "Meal 2", food: "🥪 Grilled Cheese" },
+    { title: "Meal 3", food: "🥩 Steak" },
+  ]);
+
+  function addMeal(newFood) {
+    setMeals((currentMeals) => {
+      const nextMealNumber = currentMeals.length + 1;
+      const newMeal = {
+        title: `Meal ${nextMealNumber}`,
+        food: newFood,
+      };
+      toggleAddMeal();
+      return [...currentMeals, newMeal];
+    });
+  }
+  function removeMeal(mealIndex) {
+    setMeals((currentMeals) =>
+      currentMeals.filter((_, index) => index !== mealIndex),
+    );
+  }
+
   function toggleAddMeal() {
-    setAddMeal(!addMeal);
-    if (!addMeal) {
+    setAddMealVisible(!addMealVisible);
+    if (!addMealVisible) {
       setMode("Add Meal");
     } else {
       setMode("Today");
@@ -23,7 +47,7 @@ export default function App() {
         <View className="flex-1">
           <Text className="text-5xl font-semibold text-white">{mode}</Text>
         </View>
-        {!addMeal && (
+        {!addMealVisible && (
           <TouchableOpacity className="flex justify-center items-center w-12 h-12 bg-white rounded-full">
             <Text className="text-black">AC</Text>
           </TouchableOpacity>
@@ -31,30 +55,14 @@ export default function App() {
       </View>
       <View className="flex-1 items-center h-full bg-white rounded-[38px]">
         <Macros />
-        <Meals />
+        <Meals removeMeal={removeMeal} meals={meals} />
       </View>
       <NavBar toggleAddMeal={toggleAddMeal} />
-      <Modal
-        presentationStyle="overFullScreen"
-        transparent={true}
-        className="z-10 m-0"
-        animationType="slide"
-        visible={addMeal}
-      >
-        <View className="flex-1 justify-center">
-          <View className="mt-24 h-12"></View>
-          <View className="flex-1 items-center h-full bg-white rounded-[38px]">
-            <View className="flex absolute bottom-0 z-50 items-end pb-12 w-full">
-              <TouchableOpacity
-                onPress={toggleAddMeal}
-                className="justify-center mx-8 w-16 h-16 bg-black rounded-full"
-              >
-                <Image source={cancel} className="flex w-16 h-16" />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <AddMeal
+        addMealVisible={addMealVisible}
+        addMeal={addMeal}
+        toggleAddMeal={toggleAddMeal}
+      />
     </View>
   );
 }

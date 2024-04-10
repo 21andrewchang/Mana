@@ -5,7 +5,7 @@ export default function NavBar({ toggleAddMeal }) {
   const drink = require("../assets/DrinkButton.png");
   const add = require("../assets/AddMealButton.png");
   return (
-    <View className="absolute bottom-0 z-50 flex-row pb-12 w-full">
+    <View className="absolute bottom-0 z-50 flex-row pb-10 w-full">
       <TouchableOpacity className="justify-center mx-8 w-16 h-16 bg-black rounded-full">
         <Image source={log} resizeMode="contain" className="flex w-16 h-16" />
       </TouchableOpacity>
