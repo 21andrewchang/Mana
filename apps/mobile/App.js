@@ -6,6 +6,7 @@ import { useState } from "react";
 import AddMeal from "./src/AddMeal";
 
 //TODO Generate a meal to complete leftover calorie/macro limit?
+//TODO Variable Macros
 export default function App() {
   const [addMealVisible, setAddMealVisible] = useState(false);
   const [mode, setMode] = useState("Today");
@@ -43,7 +44,7 @@ export default function App() {
 
   return (
     <View className="flex-1 justify-center bg-black">
-      <View className="flex-row m-8 mt-20 mb-4">
+      <View className="flex-row m-6 mt-20 mb-4">
         <View className="flex-1">
           <Text className="text-5xl font-semibold text-white">{mode}</Text>
         </View>

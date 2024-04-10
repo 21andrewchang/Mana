@@ -31,7 +31,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       <View className="flex-1 justify-center">
         <View className="mt-24 h-12"></View>
         <View className="flex-1 items-center h-full bg-white rounded-[38px]">
-          <ScrollView className="mt-6 w-full">
+          <ScrollView className="flex-1 mt-6 mb-16 w-full">
             {foods.map((food, index) => (
               <TouchableOpacity
                 key={index}
