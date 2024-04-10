@@ -20,7 +20,28 @@ export default function Checkin({ checkinVisible, toggleCheckin }) {
     >
       <View className="flex-1 justify-center">
         <View className="mt-24 h-12"></View>
-        <View className="flex-1 items-center h-full bg-white rounded-[38px]">
+        <View className="flex-1 h-full bg-white rounded-[38px]">
+          <Text className="m-8 text-3xl font-semibold">How do you feel?</Text>
+          <TouchableOpacity className="justify-center m-6 my-2 h-20 rounded-xl bg-black/5">
+            <Text className="mx-4 text-2xl font-medium text-black/70">
+              👍 Good
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="justify-center m-6 my-2 h-20 rounded-xl bg-black/5">
+            <Text className="mx-4 text-2xl font-medium text-black/70">
+              🥱 Tired
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="justify-center m-6 my-2 h-20 rounded-xl bg-black/5">
+            <Text className="mx-4 text-2xl font-medium text-black/70">
+              🤕 Headache
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="justify-center m-6 my-2 h-20 rounded-xl bg-black/5">
+            <Text className="mx-4 text-2xl font-medium text-black/70">
+              🤒 Sick
+            </Text>
+          </TouchableOpacity>
           <View className="flex absolute bottom-0 z-50 items-end pb-10 w-full">
             <TouchableOpacity
               onPress={toggleCheckin}
