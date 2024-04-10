@@ -4,11 +4,16 @@ import Macros from "./src/Macros";
 import Meals from "./src/Meals";
 import { useState } from "react";
 import AddMeal from "./src/AddMeal";
+import Info from "./src/Info";
+import Drink from "./src/Drink";
+import Checkin from "./src/Checkin";
 
 //TODO Generate a meal to complete leftover calorie/macro limit?
 //TODO Variable Macros
 export default function App() {
   const [addMealVisible, setAddMealVisible] = useState(false);
+  const [checkinVisible, setCheckinVisible] = useState(false);
+  const [drinkVisible, setDrinkVisible] = useState(false);
   const [mode, setMode] = useState("Today");
   const [meals, setMeals] = useState([
     { title: "Meal 1", food: "🍳 Scrambled Eggs" },
@@ -33,6 +38,15 @@ export default function App() {
     );
   }
 
+  function toggleDrink() {
+    setDrinkVisible(!drinkVisible);
+    if (!drinkVisible) {
+      setMode("Drink");
+    } else {
+      setMode("Today");
+    }
+  }
+
   function toggleAddMeal() {
     setAddMealVisible(!addMealVisible);
     if (!addMealVisible) {
@@ -42,28 +56,34 @@ export default function App() {
     }
   }
 
+  function toggleCheckin() {
+    setCheckinVisible(!checkinVisible);
+    if (!checkinVisible) {
+      setMode("Daily Checkin");
+    } else {
+      setMode("Today");
+    }
+  }
+
   return (
     <View className="flex-1 justify-center bg-black">
-      <View className="flex-row m-6 mt-20 mb-4">
-        <View className="flex-1">
-          <Text className="text-5xl font-semibold text-white">{mode}</Text>
-        </View>
-        {!addMealVisible && (
-          <TouchableOpacity className="flex justify-center items-center w-12 h-12 bg-white rounded-full">
-            <Text className="text-black">AC</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      <Info mode={mode} addMealVisible={addMealVisible} />
       <View className="flex-1 items-center h-full bg-white rounded-[38px]">
         <Macros />
         <Meals removeMeal={removeMeal} meals={meals} />
       </View>
-      <NavBar toggleAddMeal={toggleAddMeal} />
+      <NavBar
+        toggleAddMeal={toggleAddMeal}
+        toggleDrink={toggleDrink}
+        toggleCheckin={toggleCheckin}
+      />
       <AddMeal
         addMealVisible={addMealVisible}
         addMeal={addMeal}
         toggleAddMeal={toggleAddMeal}
       />
+      <Drink drinkVisible={drinkVisible} toggleDrink={toggleDrink} />
+      <Checkin checkinVisible={checkinVisible} toggleCheckin={toggleCheckin} />
     </View>
   );
 }
