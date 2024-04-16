@@ -42,7 +42,7 @@ export default function Checkin({ checkinVisible, toggleCheckin }) {
               🤒 Sick
             </Text>
           </TouchableOpacity>
-          <View className="flex absolute bottom-0 z-50 items-end pb-10 w-full">
+          <View className="flex absolute bottom-0 z-50 items-start pb-10 w-full">
             <TouchableOpacity
               onPress={toggleCheckin}
               className="justify-center mx-8 w-16 h-16 bg-black rounded-full"

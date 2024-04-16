@@ -46,7 +46,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
               </TouchableOpacity>
             ))}
           </ScrollView>
-          <View className="flex absolute bottom-0 z-50 items-end pb-10 w-full">
+          <View className="flex absolute bottom-0 z-50 items-start pb-10 w-full">
             <TouchableOpacity
               onPress={toggleAddMeal}
               className="justify-center mx-8 w-16 h-16 bg-black rounded-full"
