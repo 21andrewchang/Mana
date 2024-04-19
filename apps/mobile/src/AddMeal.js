@@ -10,14 +10,14 @@ import {
 export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
   const cancel = require("../assets/CancelButton.png");
   const foods = [
-    "🥯 Bagel",
-    "🍲 Beef Stew",
-    "🥩 Steak",
-    "🍜 Ramen",
-    "🍝 Pasta",
-    "🥪 Grilled Cheese",
-    "🍳 Scrambled Eggs",
-    "🍕 Pizza",
+    { name: "🥯 Bagel", protein: 11, fat: 1, carbs: 56 },
+    { name: "🍲 Beef Stew", protein: 26, fat: 16, carbs: 15 },
+    { name: "🥩 Steak", protein: 70, fat: 20, carbs: 0 },
+    { name: "🍜 Ramen", protein: 9, fat: 7, carbs: 40 },
+    { name: "🍝 Pasta", protein: 13, fat: 1, carbs: 43 },
+    { name: "🥪 Grilled Cheese", protein: 15, fat: 18, carbs: 28 },
+    { name: "🍳 Scrambled Eggs", protein: 13, fat: 18, carbs: 1 },
+    { name: "🍕 Pizza", protein: 11, fat: 10, carbs: 36 },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
                 className="justify-center m-6 my-2 h-20 rounded-xl bg-black/5"
               >
                 <Text className="mx-4 text-2xl font-medium text-black/70">
-                  {food}
+                  {food.name}
                 </Text>
               </TouchableOpacity>
             ))}
