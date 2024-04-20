@@ -7,18 +7,17 @@ import {
   View,
 } from "react-native";
 
-export default function Drink({ drinkVisible, toggleDrink }) {
+export default function Drink({
+  vitaminC,
+  potassium,
+  calcium,
+  drinkVisible,
+  toggleDrink,
+}) {
   const cancel = require("../assets/CancelButton.png");
-  const foods = [
-    "🥯 Bagel",
-    "🍲 Beef Stew",
-    "🥩 Steak",
-    "🍜 Ramen",
-    "🍝 Pasta",
-    "🥪 Grilled Cheese",
-    "🍳 Scrambled Eggs",
-    "🍕 Pizza",
-  ];
+  const drinkPotassium = 2600 - potassium;
+  const drinkCalcium = 1000 - calcium;
+  const drinkVitaminC = 75 - vitaminC;
 
   return (
     <Modal
@@ -32,11 +31,45 @@ export default function Drink({ drinkVisible, toggleDrink }) {
         <View className="mt-24 h-12"></View>
         <View className="flex-1 items-center h-full bg-white rounded-[38px]">
           <View className="flex-1 mt-6 mb-16 w-full">
-            <View className="m-6 my-2 h-72 rounded-xl bg-black/5">
-              <Text className="m-4 text-2xl font-medium text-black/70">
-                Protein 60g
+            <TouchableOpacity className="justify-center m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="mx-4 text-2xl font-semibold">
+                💪 Muscle Function
               </Text>
-            </View>
+              <View className="flex-row justify-between">
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  Calcium
+                </Text>
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  {drinkCalcium}mg
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity className="justify-center m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="mx-4 text-2xl font-semibold">
+                😷 Immune Boost
+              </Text>
+              <View className="flex-row justify-between">
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  Vitamin C
+                </Text>
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  {drinkVitaminC}mg
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity className="justify-center m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="mx-4 text-2xl font-semibold">
+                ❤️ Heart Health
+              </Text>
+              <View className="flex-row justify-between">
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  Potassium
+                </Text>
+                <Text className="mx-4 text-xl font-medium text-black/70">
+                  {drinkPotassium}mg
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View className="flex absolute bottom-0 flex-row justify-between pb-10 w-full">
             <TouchableOpacity

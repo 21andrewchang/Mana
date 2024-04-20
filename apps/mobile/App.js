@@ -1,4 +1,5 @@
-import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
+import Profile from "./src/Profile";
 import NavBar from "./src/NavBar";
 import Macros from "./src/Macros";
 import Meals from "./src/Meals";
@@ -14,8 +15,12 @@ export default function App() {
   const [totalProtein, setTotalProtein] = useState(0);
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
+  const [totalVitaminC, setTotalVitaminC] = useState(0);
+  const [totalCalcium, setTotalCalcium] = useState(0);
+  const [totalPotassium, setTotalPotassium] = useState(0);
 
   const [addMealVisible, setAddMealVisible] = useState(false);
+  const [profileVisible, setProfileVisible] = useState(false);
   const [checkinVisible, setCheckinVisible] = useState(false);
   const [drinkVisible, setDrinkVisible] = useState(false);
   const [mode, setMode] = useState("Today");
@@ -30,16 +35,23 @@ export default function App() {
         protein: newFood.protein,
         fat: newFood.fat,
         carbs: newFood.carbs,
+        potassium: newFood.potassium,
+        vitaminC: newFood.vitaminC,
+        calcium: newFood.calcium,
       };
       toggleAddMeal();
       return [...currentMeals, newMeal];
     });
 
-    // Update the total macronutrients state
+    // Update the total macronutrients and micronutrients state
     setTotalProtein((prevProtein) => prevProtein + newFood.protein);
     setTotalFat((prevFat) => prevFat + newFood.fat);
     setTotalCarbs((prevCarbs) => prevCarbs + newFood.carbs);
+    setTotalPotassium((prevPotassium) => prevPotassium + newFood.potassium);
+    setTotalVitaminC((prevVitaminC) => prevVitaminC + newFood.vitaminC);
+    setTotalCalcium((prevCalcium) => prevCalcium + newFood.calcium);
   }
+
   function removeMeal(mealIndex) {
     setMeals((currentMeals) => {
       // Remove the meal at the specified index
@@ -47,7 +59,7 @@ export default function App() {
         (_, index) => index !== mealIndex,
       );
 
-      // Update the total macronutrients by subtracting the meal's macros
+      // Update the total macronutrients and micronutrients by subtracting the meal's macros and micros
       if (currentMeals[mealIndex]) {
         // Ensure the meal exists before trying to access its properties
         setTotalProtein(
@@ -55,6 +67,15 @@ export default function App() {
         );
         setTotalFat((prevFat) => prevFat - currentMeals[mealIndex].fat);
         setTotalCarbs((prevCarbs) => prevCarbs - currentMeals[mealIndex].carbs);
+        setTotalPotassium(
+          (prevPotassium) => prevPotassium - currentMeals[mealIndex].potassium,
+        );
+        setTotalVitaminC(
+          (prevVitaminC) => prevVitaminC - currentMeals[mealIndex].vitaminC,
+        );
+        setTotalCalcium(
+          (prevCalcium) => prevCalcium - currentMeals[mealIndex].calcium,
+        );
       }
 
       // Correct the numbering of the meals after the removal
@@ -64,11 +85,10 @@ export default function App() {
       }));
     });
   }
-
   function toggleDrink() {
     setDrinkVisible(!drinkVisible);
     if (!drinkVisible) {
-      setMode("Drink");
+      setMode("Today's Mix");
     } else {
       setMode("Today");
     }
@@ -83,6 +103,14 @@ export default function App() {
     }
   }
 
+  function toggleProfile() {
+    setProfileVisible(!profileVisible);
+    if (!profileVisible) {
+      setMode("Profile");
+    } else {
+      setMode("Today");
+    }
+  }
   function toggleCheckin() {
     setCheckinVisible(!checkinVisible);
     if (!checkinVisible) {
@@ -94,7 +122,11 @@ export default function App() {
 
   return (
     <View className="flex-1 justify-center bg-black">
-      <Info mode={mode} addMealVisible={addMealVisible} />
+      <Info
+        toggleProfile={toggleProfile}
+        mode={mode}
+        addMealVisible={addMealVisible}
+      />
       <View className="flex-1 items-center h-full bg-white rounded-[38px]">
         <Macros protein={totalProtein} carbs={totalCarbs} fat={totalFat} />
         <Meals removeMeal={removeMeal} meals={meals} />
@@ -109,7 +141,14 @@ export default function App() {
         addMeal={addMeal}
         toggleAddMeal={toggleAddMeal}
       />
-      <Drink drinkVisible={drinkVisible} toggleDrink={toggleDrink} />
+      <Profile profileVisible={profileVisible} toggleProfile={toggleProfile} />
+      <Drink
+        vitaminC={totalVitaminC}
+        potassium={totalPotassium}
+        calcium={totalCalcium}
+        drinkVisible={drinkVisible}
+        toggleDrink={toggleDrink}
+      />
       <Checkin checkinVisible={checkinVisible} toggleCheckin={toggleCheckin} />
     </View>
   );
