@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/react": "~18.2.45",
+    "eas-cli": "^7.8.2",
     "expo": "~50.0.7",
     "expo-image": "~1.10.6",
     "expo-status-bar": "~1.11.1",

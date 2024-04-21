@@ -1,11 +1,4 @@
-import {
-  Image,
-  ScrollView,
-  Modal,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 
 export default function Drink({
   vitaminC,
@@ -18,6 +11,32 @@ export default function Drink({
   const drinkPotassium = 2600 - potassium;
   const drinkCalcium = 1000 - calcium;
   const drinkVitaminC = 75 - vitaminC;
+  const sendRecipeData = async () => {
+    const recipeData = {
+      vitaminC: drinkVitaminC,
+      potassium: drinkPotassium,
+      calcium: drinkCalcium,
+    };
+
+    try {
+      const response = await fetch(
+        "https://e65c-50-218-51-5.ngrok-free.app/send-recipe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(recipeData),
+        },
+      );
+
+      const jsonResponse = await response.json();
+      console.log("Response:", jsonResponse);
+      toggleDrink(); // Close the modal after sending data
+    } catch (error) {
+      console.error("Failed to send recipe:", error);
+    }
+  };
 
   return (
     <Modal
@@ -79,7 +98,9 @@ export default function Drink({
               <Image source={cancel} className="flex w-16 h-16" />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={toggleDrink}
+              onPress={() => {
+                sendRecipeData();
+              }}
               className="justify-center mr-8 w-36 h-16 bg-black rounded-3xl"
             >
               <Text className="text-xl font-semibold text-center text-white">
