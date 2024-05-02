@@ -15,9 +15,9 @@ export default function App() {
   const [totalProtein, setTotalProtein] = useState(0);
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
-  const [totalVitaminC, setTotalVitaminC] = useState(0);
-  const [totalCalcium, setTotalCalcium] = useState(0);
-  const [totalPotassium, setTotalPotassium] = useState(0);
+  const [totalVitaminC, setTotalVitaminC] = useState(75);
+  const [totalCalcium, setTotalCalcium] = useState(1000);
+  const [totalPotassium, setTotalPotassium] = useState(2600);
 
   const [addMealVisible, setAddMealVisible] = useState(false);
   const [profileVisible, setProfileVisible] = useState(false);
@@ -47,9 +47,9 @@ export default function App() {
     setTotalProtein((prevProtein) => prevProtein + newFood.protein);
     setTotalFat((prevFat) => prevFat + newFood.fat);
     setTotalCarbs((prevCarbs) => prevCarbs + newFood.carbs);
-    setTotalPotassium((prevPotassium) => prevPotassium + newFood.potassium);
-    setTotalVitaminC((prevVitaminC) => prevVitaminC + newFood.vitaminC);
-    setTotalCalcium((prevCalcium) => prevCalcium + newFood.calcium);
+    setTotalPotassium((prevPotassium) => prevPotassium - newFood.potassium);
+    setTotalVitaminC((prevVitaminC) => prevVitaminC - newFood.vitaminC);
+    setTotalCalcium((prevCalcium) => prevCalcium - newFood.calcium);
   }
 
   function removeMeal(mealIndex) {
@@ -68,13 +68,13 @@ export default function App() {
         setTotalFat((prevFat) => prevFat - currentMeals[mealIndex].fat);
         setTotalCarbs((prevCarbs) => prevCarbs - currentMeals[mealIndex].carbs);
         setTotalPotassium(
-          (prevPotassium) => prevPotassium - currentMeals[mealIndex].potassium,
+          (prevPotassium) => prevPotassium + currentMeals[mealIndex].potassium,
         );
         setTotalVitaminC(
-          (prevVitaminC) => prevVitaminC - currentMeals[mealIndex].vitaminC,
+          (prevVitaminC) => prevVitaminC + currentMeals[mealIndex].vitaminC,
         );
         setTotalCalcium(
-          (prevCalcium) => prevCalcium - currentMeals[mealIndex].calcium,
+          (prevCalcium) => prevCalcium + currentMeals[mealIndex].calcium,
         );
       }
 
