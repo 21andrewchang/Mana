@@ -49,4 +49,9 @@
 
 #### Drink Request
 
+- Must be able to communicate over wifi with ESP32
+- Must have capacity notification for each container
+
 #### Daily Checkin
+
+- Must store how the user feels on a daily basis
