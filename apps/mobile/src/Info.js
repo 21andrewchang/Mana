@@ -1,6 +1,7 @@
 import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 
 export default function Info({ toggleProfile, mode }) {
+  const pfp = require("../../mobile/assets/pfp.png");
   return (
     <>
       <View className="flex-row m-6 mt-20 mb-4">
@@ -14,7 +15,11 @@ export default function Info({ toggleProfile, mode }) {
             }}
             className="flex justify-center items-center w-12 h-12 bg-white rounded-full"
           >
-            <Text className="text-black">AC</Text>
+            <Image
+              source={pfp}
+              resizeMode="cover"
+              className="flex-1 rounded-full aspect-square"
+            />
           </TouchableOpacity>
         )}
       </View>

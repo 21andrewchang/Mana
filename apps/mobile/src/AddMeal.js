@@ -18,6 +18,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 70,
       vitaminC: 0.6,
       calcium: 30,
+      calories: 280, // 1 medium bagel
     },
     {
       name: "🍲 Beef Stew",
@@ -27,6 +28,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 370,
       vitaminC: 1.2,
       calcium: 20,
+      calories: 250, // 1 cup of beef stew
     },
     {
       name: "🥩 Steak",
@@ -36,6 +38,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 318,
       vitaminC: 0,
       calcium: 9,
+      calories: 679, // 8 oz grilled ribeye steak
     },
     {
       name: "🍜 Ramen",
@@ -45,6 +48,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 100,
       vitaminC: 0,
       calcium: 20,
+      calories: 371, // 1 package instant ramen
     },
     {
       name: "🍝 Pasta",
@@ -54,6 +58,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 63,
       vitaminC: 0,
       calcium: 10,
+      calories: 221, // 1 cup cooked pasta
     },
     {
       name: "🥪 Grilled Cheese",
@@ -63,6 +68,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 84,
       vitaminC: 0,
       calcium: 206,
+      calories: 556, // 1 sandwich
     },
     {
       name: "🍳 Scrambled Eggs",
@@ -72,6 +78,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 138,
       vitaminC: 0,
       calcium: 56,
+      calories: 200, // 2 large eggs with butter
     },
     {
       name: "🍕 Pizza",
@@ -81,6 +88,7 @@ export default function AddMeal({ addMealVisible, toggleAddMeal, addMeal }) {
       potassium: 184,
       vitaminC: 1.5,
       calcium: 219,
+      calories: 285, // 1 slice of cheese pizza
     },
   ];
 

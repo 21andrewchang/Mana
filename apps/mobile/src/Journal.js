@@ -1,13 +1,6 @@
-import {
-  Image,
-  ScrollView,
-  Modal,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 
-export default function Checkin({ checkinVisible, toggleCheckin }) {
+export default function Journal({ journalVisible, toggleJournal }) {
   const cancel = require("../assets/CancelButton.png");
 
   return (
@@ -16,7 +9,7 @@ export default function Checkin({ checkinVisible, toggleCheckin }) {
       transparent={true}
       className="z-10 m-0"
       animationType="slide"
-      visible={checkinVisible}
+      visible={journalVisible}
     >
       <View className="flex-1 justify-center">
         <View className="mt-24 h-12"></View>
@@ -44,7 +37,7 @@ export default function Checkin({ checkinVisible, toggleCheckin }) {
           </TouchableOpacity>
           <View className="flex absolute bottom-0 z-50 items-start pb-10 w-full">
             <TouchableOpacity
-              onPress={toggleCheckin}
+              onPress={toggleJournal}
               className="justify-center mx-8 w-16 h-16 bg-black rounded-full"
             >
               <Image source={cancel} className="flex w-16 h-16" />

@@ -1,25 +1,36 @@
+import React from "react";
 import { Text, View } from "react-native";
+import * as Progress from "react-native-progress";
 
-export default function Macros({ protein, carbs, fat }) {
+export default function Macros({ protein, calories }) {
+  const proteinPercentage = protein / 170;
+  const caloriesPercentage = calories / 3000;
+
   return (
-    <View className="flex-row my-6">
-      <View className="justify-center mx-6 w-20 h-20 bg-red-400 rounded-xl">
-        <Text className="text-4xl text-center">🍖</Text>
-        <Text className="font-semibold text-center text-white text-l">
-          {protein}g
-        </Text>
+    <View className="flex justify-center items-center my-4">
+      <View className="flex-row items-center m-2">
+        <Text className="text-3xl text-center">🍖</Text>
+        <Progress.Bar
+          progress={proteinPercentage}
+          width={300}
+          height={25}
+          color="#FE6464"
+          unfilledColor="#F7F7F7"
+          borderWidth={0}
+          borderRadius={100}
+        />
       </View>
-      <View className="justify-center mx-6 w-20 h-20 bg-purple-300 rounded-xl">
-        <Text className="text-4xl text-center">🍞</Text>
-        <Text className="font-semibold text-center text-white text-l">
-          {carbs}g
-        </Text>
-      </View>
-      <View className="justify-center mx-6 w-20 h-20 bg-orange-300 rounded-xl">
-        <Text className="text-4xl text-center">🧈</Text>
-        <Text className="font-semibold text-center text-white text-l">
-          {fat}g
-        </Text>
+      <View className="flex-row items-center">
+        <Text className="mb-3 text-3xl text-center">🎯</Text>
+        <Progress.Bar
+          progress={caloriesPercentage}
+          width={300}
+          height={25}
+          color="#70EFF9"
+          unfilledColor="#F7F7F7F7"
+          borderWidth={0}
+          borderRadius={100}
+        />
       </View>
     </View>
   );

@@ -7,21 +7,19 @@ import { useState } from "react";
 import AddMeal from "./src/AddMeal";
 import Info from "./src/Info";
 import Drink from "./src/Drink";
-import Checkin from "./src/Checkin";
+import Journal from "./src/Journal";
 
 //TODO Generate a meal to complete leftover calorie/macro limit?
 //TODO Variable Macros
 export default function App() {
   const [totalProtein, setTotalProtein] = useState(0);
+  const [totalCalories, setTotalCalories] = useState(0);
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
-  const [totalVitaminC, setTotalVitaminC] = useState(75);
-  const [totalCalcium, setTotalCalcium] = useState(1000);
-  const [totalPotassium, setTotalPotassium] = useState(2600);
 
   const [addMealVisible, setAddMealVisible] = useState(false);
   const [profileVisible, setProfileVisible] = useState(false);
-  const [checkinVisible, setCheckinVisible] = useState(false);
+  const [journalVisible, setJournalVisible] = useState(false);
   const [drinkVisible, setDrinkVisible] = useState(false);
   const [mode, setMode] = useState("Today");
   const [meals, setMeals] = useState([]);
@@ -38,6 +36,7 @@ export default function App() {
         potassium: newFood.potassium,
         vitaminC: newFood.vitaminC,
         calcium: newFood.calcium,
+        calories: newFood.calories,
       };
       toggleAddMeal();
       return [...currentMeals, newMeal];
@@ -47,9 +46,7 @@ export default function App() {
     setTotalProtein((prevProtein) => prevProtein + newFood.protein);
     setTotalFat((prevFat) => prevFat + newFood.fat);
     setTotalCarbs((prevCarbs) => prevCarbs + newFood.carbs);
-    setTotalPotassium((prevPotassium) => prevPotassium - newFood.potassium);
-    setTotalVitaminC((prevVitaminC) => prevVitaminC - newFood.vitaminC);
-    setTotalCalcium((prevCalcium) => prevCalcium - newFood.calcium);
+    setTotalCalories((prevCalories) => prevCalories + newFood.calories);
   }
 
   function removeMeal(mealIndex) {
@@ -67,14 +64,8 @@ export default function App() {
         );
         setTotalFat((prevFat) => prevFat - currentMeals[mealIndex].fat);
         setTotalCarbs((prevCarbs) => prevCarbs - currentMeals[mealIndex].carbs);
-        setTotalPotassium(
-          (prevPotassium) => prevPotassium + currentMeals[mealIndex].potassium,
-        );
-        setTotalVitaminC(
-          (prevVitaminC) => prevVitaminC + currentMeals[mealIndex].vitaminC,
-        );
-        setTotalCalcium(
-          (prevCalcium) => prevCalcium + currentMeals[mealIndex].calcium,
+        setTotalCarbs(
+          (prevCalories) => prevCalories - currentMeals[mealIndex].calories,
         );
       }
 
@@ -111,10 +102,10 @@ export default function App() {
       setMode("Today");
     }
   }
-  function toggleCheckin() {
-    setCheckinVisible(!checkinVisible);
-    if (!checkinVisible) {
-      setMode("Daily Checkin");
+  function toggleJournal() {
+    setJournalVisible(!journalVisible);
+    if (!journalVisible) {
+      setMode("Journal");
     } else {
       setMode("Today");
     }
@@ -122,19 +113,20 @@ export default function App() {
 
   return (
     <View className="flex-1 justify-center bg-black">
-      <Info
-        toggleProfile={toggleProfile}
-        mode={mode}
-        addMealVisible={addMealVisible}
-      />
+      <Info toggleProfile={toggleProfile} mode={mode} />
       <View className="flex-1 items-center h-full bg-white rounded-[38px]">
-        <Macros protein={totalProtein} carbs={totalCarbs} fat={totalFat} />
+        <Macros
+          protein={totalProtein}
+          carbs={totalCarbs}
+          calories={totalCalories}
+          fat={totalFat}
+        />
         <Meals removeMeal={removeMeal} meals={meals} />
       </View>
       <NavBar
         toggleAddMeal={toggleAddMeal}
         toggleDrink={toggleDrink}
-        toggleCheckin={toggleCheckin}
+        toggleJournal={toggleJournal}
       />
       <AddMeal
         addMealVisible={addMealVisible}
@@ -142,14 +134,8 @@ export default function App() {
         toggleAddMeal={toggleAddMeal}
       />
       <Profile profileVisible={profileVisible} toggleProfile={toggleProfile} />
-      <Drink
-        vitaminC={totalVitaminC}
-        potassium={totalPotassium}
-        calcium={totalCalcium}
-        drinkVisible={drinkVisible}
-        toggleDrink={toggleDrink}
-      />
-      <Checkin checkinVisible={checkinVisible} toggleCheckin={toggleCheckin} />
+      <Drink drinkVisible={drinkVisible} toggleDrink={toggleDrink} />
+      <Journal journalVisible={journalVisible} toggleJournal={toggleJournal} />
     </View>
   );
 }

@@ -1,6 +1,6 @@
 import { Image, TouchableOpacity, View } from "react-native";
 
-export default function NavBar({ toggleDrink, toggleCheckin, toggleAddMeal }) {
+export default function NavBar({ toggleDrink, toggleJournal, toggleAddMeal }) {
   const log = require("../assets/CheckinButton.png");
   const drink = require("../assets/DrinkButton.png");
   const add = require("../assets/AddMealButton.png");
@@ -9,7 +9,7 @@ export default function NavBar({ toggleDrink, toggleCheckin, toggleAddMeal }) {
   return (
     <View className="absolute bottom-0 z-50 flex-row pb-10 w-full">
       <TouchableOpacity
-        onPress={toggleCheckin}
+        onPress={toggleJournal}
         className="justify-center mx-8 w-16 h-16 bg-black rounded-full"
       >
         <Image source={log} resizeMode="contain" className="flex w-16 h-16" />
