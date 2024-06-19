@@ -64,7 +64,7 @@ export default function App() {
         );
         setTotalFat((prevFat) => prevFat - currentMeals[mealIndex].fat);
         setTotalCarbs((prevCarbs) => prevCarbs - currentMeals[mealIndex].carbs);
-        setTotalCarbs(
+        setTotalCalories(
           (prevCalories) => prevCalories - currentMeals[mealIndex].calories,
         );
       }
