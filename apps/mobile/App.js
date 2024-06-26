@@ -1,12 +1,11 @@
-import { View } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import Profile from "./src/Profile";
 import NavBar from "./src/NavBar";
 import Macros from "./src/Macros";
-import Meals from "./src/Meals";
 import { useState } from "react";
 import AddMeal from "./src/AddMeal";
 import Info from "./src/Info";
-import Drink from "./src/Drink";
+import Gym from "./src/Gym";
 import Journal from "./src/Journal";
 
 //TODO Generate a meal to complete leftover calorie/macro limit?
@@ -17,10 +16,10 @@ export default function App() {
   const [totalCarbs, setTotalCarbs] = useState(0);
   const [totalFat, setTotalFat] = useState(0);
 
-  const [addMealVisible, setAddMealVisible] = useState(false);
+  const [homeVisible, setHomeVisible] = useState(true);
   const [profileVisible, setProfileVisible] = useState(false);
   const [journalVisible, setJournalVisible] = useState(false);
-  const [drinkVisible, setDrinkVisible] = useState(false);
+  const [gymVisible, setGymVisible] = useState(false);
   const [mode, setMode] = useState("Day 237");
   const [meals, setMeals] = useState([]);
 
@@ -76,66 +75,53 @@ export default function App() {
       }));
     });
   }
-  function toggleDrink() {
-    setDrinkVisible(!drinkVisible);
-    if (!drinkVisible) {
-      setMode("Today's Mix");
-    } else {
-      setMode("Today");
-    }
-  }
+  const toggleView = (view) => {
+    setProfileVisible(view === "Profile");
+    setHomeVisible(view === "Home");
+    setJournalVisible(view === "Journal");
+    setGymVisible(view === "Gym");
 
-  function toggleAddMeal() {
-    setAddMealVisible(!addMealVisible);
-    if (!addMealVisible) {
-      setMode("Add Meal");
-    } else {
-      setMode("Today");
-    }
-  }
-
-  function toggleProfile() {
-    setProfileVisible(!profileVisible);
-    if (!profileVisible) {
+    if (view === "Profile") {
       setMode("Profile");
     } else {
       setMode("Today");
     }
-  }
-  function toggleJournal() {
-    setJournalVisible(!journalVisible);
-    if (!journalVisible) {
-      setMode("Journal");
-    } else {
-      setMode("Today");
-    }
-  }
+  };
 
   return (
     <View className="flex-1 justify-center bg-black">
-      <Info toggleProfile={toggleProfile} mode={mode} />
-      <View className="flex-1 items-center h-full bg-white rounded-[38px]">
-        <Macros
-          protein={totalProtein}
-          carbs={totalCarbs}
-          calories={totalCalories}
-          fat={totalFat}
-        />
-        <Meals removeMeal={removeMeal} meals={meals} />
-      </View>
+      <Info toggleProfile={() => toggleView("Profile")} mode={mode} />
+      {journalVisible && <Journal />}
+      {gymVisible && <Gym />}
+      {homeVisible && (
+        <View className="flex-1 items-center h-full bg-white rounded-[38px]">
+          <Macros
+            protein={totalProtein}
+            carbs={totalCarbs}
+            calories={totalCalories}
+            fat={totalFat}
+          />
+          <View className="flex-1 w-full">
+            <TouchableOpacity className="flex-row m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="m-8 text-xl font-semibold">Meal 1</Text>
+              <Text className="m-8 text-xl font-semibold">Macros</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="m-8 text-xl font-semibold">Meal 2</Text>
+              <Text className="m-8 text-xl font-semibold">Macros</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row m-6 my-2 h-24 rounded-xl bg-black/5">
+              <Text className="m-8 text-xl font-semibold">Meal 3</Text>
+              <Text className="m-8 text-xl font-semibold">Macros</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
       <NavBar
-        toggleAddMeal={toggleAddMeal}
-        toggleDrink={toggleDrink}
-        toggleJournal={toggleJournal}
+        toggleHome={() => toggleView("Home")}
+        toggleGym={() => toggleView("Gym")}
+        toggleJournal={() => toggleView("Journal")}
       />
-      <AddMeal
-        addMealVisible={addMealVisible}
-        addMeal={addMeal}
-        toggleAddMeal={toggleAddMeal}
-      />
-      <Profile profileVisible={profileVisible} toggleProfile={toggleProfile} />
-      <Drink drinkVisible={drinkVisible} toggleDrink={toggleDrink} />
-      <Journal journalVisible={journalVisible} toggleJournal={toggleJournal} />
     </View>
   );
 }
