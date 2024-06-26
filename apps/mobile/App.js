@@ -21,7 +21,7 @@ export default function App() {
   const [profileVisible, setProfileVisible] = useState(false);
   const [journalVisible, setJournalVisible] = useState(false);
   const [drinkVisible, setDrinkVisible] = useState(false);
-  const [mode, setMode] = useState("Today");
+  const [mode, setMode] = useState("Day 237");
   const [meals, setMeals] = useState([]);
 
   function addMeal(newFood) {

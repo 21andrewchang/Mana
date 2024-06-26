@@ -13,7 +13,7 @@ export default function Macros({ protein, calories }) {
         <Progress.Bar
           progress={proteinPercentage}
           width={300}
-          height={25}
+          height={28}
           color="#FE6464"
           unfilledColor="#F7F7F7"
           borderWidth={0}
@@ -25,7 +25,7 @@ export default function Macros({ protein, calories }) {
         <Progress.Bar
           progress={caloriesPercentage}
           width={300}
-          height={25}
+          height={28}
           color="#70EFF9"
           unfilledColor="#F7F7F7F7"
           borderWidth={0}
